@@ -10,7 +10,8 @@ public class BottomUp {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the number for fibonacci::");
 		int n = sc.nextInt();
-		long ans = bottomUp(n);
+		//long ans = bottomUp(n);
+		long ans = bottomUpp(n);
 		System.out.println("The fibonacci number is:  "+ans);
 		
 	}
@@ -25,4 +26,16 @@ public class BottomUp {
         }
         return dp[n];
     }
+	
+	private static long bottomUpp(int n) {//space optimization
+		if(n <= 1) return n;
+		long prev = 1;
+		long prev2 = 1;
+		for(int i=2;i<=n;i++) {
+			long curr = ((prev2%mod)+(prev%mod))%mod;
+			prev2 = prev;
+			prev = curr;
+		}
+		return prev;
+	}
 }
