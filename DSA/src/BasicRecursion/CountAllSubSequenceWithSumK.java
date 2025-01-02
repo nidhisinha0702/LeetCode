@@ -13,6 +13,7 @@ public class CountAllSubSequenceWithSumK {
 		int ans = countSub(0,0,sum,n,arr);
 		System.out.println("Total number of subsequences are::"+ans);
 	}
+	//O(2^n)
 	private static int countSub(int ind,int sum,int k,int n, int []arr) {
 		if(ind == n) {//all elements of array have been considered
 			//condition satisfied
