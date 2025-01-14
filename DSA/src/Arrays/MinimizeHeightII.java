@@ -15,8 +15,8 @@ public class MinimizeHeightII {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int arr[] = {1,8,10,6,4,6,9,1};
-		int k = 7;
+		int arr[] = {1,5,8,10};
+		int k = 2;
 		int ans = getMinDiff(arr,k);
 		System.out.println("The minimum difference between the longest and the shortest tower is :"+ans);
 	}
@@ -30,7 +30,7 @@ public class MinimizeHeightII {
         int minH = 0;
         int maxH = 0;
         for(int i=1;i<n;i++){
-            if(arr[i]<0) continue;
+            if(arr[i]-k < 0) continue;
             //find the minimum between 1st and new minimum after -k
             minH = Math.min(arr[0]+k, arr[i]-k);
             //find the maximum between last and the new maximum which happens to be at i-1
