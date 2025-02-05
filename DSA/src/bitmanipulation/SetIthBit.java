@@ -1,5 +1,8 @@
 package bitmanipulation;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 public class SetIthBit {
@@ -14,6 +17,8 @@ public class SetIthBit {
 		System.out.println("remove the last bit:"+removeLastSetBit(n, i));
 		System.out.println("the num is power of 2::"+numIsPowOf2(n));
 		System.out.println("count the num of set bits::"+cntNumOfSetBits(n));
+		System.out.println("set the right most unset bit::"+setBit(n));
+		System.out.println("swap a and b without using temp variable::"+get(9, 13));
 	}
 	private static int setIthBit(int n, int i) {
 		n = n | (1 << i);
@@ -36,6 +41,7 @@ public class SetIthBit {
 	
 
 	private static boolean numIsPowOf2(int n) {
+		if(n<=0) return false; //negative numbers are not considered as power of two
 		return ((n & (n-1)) == 0);
 		
 	}
@@ -49,5 +55,21 @@ public class SetIthBit {
 		if(n == 1) cnt += 1;
 		return cnt;
 	}
+	
+	private static int setBit(int n) {
+        // code here
+        n = (n | (n + 1));
+        return n;
+	}
+	
+	static List<Integer> get(int a,int b)
+    {
+        // code here
+        a = a ^ b;
+        b = a ^ b;
+        a = a ^ b;
+        
+        return new ArrayList<Integer>(Arrays.asList(a,b));
+    }
 
 }
