@@ -12,7 +12,8 @@ public class CoinChangeProblem {
 
 	}
 	private static int change(int amount, int[] coins) {
-        return fff(amount,coins);
+		int n = coins.length;
+        return f(n-1,amount,coins);
     }
     private static int f(int ind,int tar, int[] arr){
         //write recursion//convert into memoization(top-down)
