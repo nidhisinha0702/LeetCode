@@ -4,8 +4,8 @@ public class PlusOne {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int nums[] = {9,9,9};
-		int ans[] = plusOne(nums);
+		int nums[] = {1,9,3};
+		int ans[] = plusOneOptimized(nums);
 		for(int a:ans)
 			System.out.print(a+" ");
 
@@ -31,6 +31,20 @@ public class PlusOne {
 				return ans;
 			}
 		}return arr;
+	}
+	
+	private static int[] plusOneOptimized(int arr[]) {
+		int n = arr.length;
+		for(int i=n-1;i>=0;i--) {
+			if(arr[i] < 9) {
+				arr[i] = arr[i]+1;
+				return arr;
+			}
+			arr[i]=0;
+		}
+		arr = new int[n+1];
+		arr[0] = 1;
+		return arr;
 	}
 
 }
