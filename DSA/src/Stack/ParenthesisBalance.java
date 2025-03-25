@@ -6,7 +6,7 @@ public class ParenthesisBalance {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String s="(){}}{";
+		String s="({[)";
 		if(isValid(s)==true)
 		System.out.println("True");
 		else
