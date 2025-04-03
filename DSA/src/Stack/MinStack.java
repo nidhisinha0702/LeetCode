@@ -20,6 +20,8 @@ public class MinStack {
     public MinStack() {
         stack = new Stack<>();
     }
+    //2*val-prev_mini = new_val-->push
+    //when you modify the mini is your top
     
     public void push(int value) {
         Long val = Long.valueOf(value);
