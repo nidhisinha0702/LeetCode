@@ -1,7 +1,8 @@
 package dpOnSubsequence;
 
 import java.util.Arrays;
-
+//maintains the order in the string but not necessarily consecutive
+//s="abc"->"","a","b","c","ab","ac","bc","abc"
 public class LongestCommonSubsequence {
 
 	public static void main(String[] args) {
@@ -32,6 +33,7 @@ public class LongestCommonSubsequence {
 	            return dp[i][j] = 1 + f(i-1,j-1,s,t,dp);
 	        return dp[i][j] = Math.max(f(i-1,j,s,t,dp),f(i,j-1,s,t,dp));
 	    }
+	    //shifting of indexes in order to write tabulation
 	    private static int ff(int i,int j,String s, String t,int dp[][]){
 	        if(i == 0 || j == 0) return 0;
 

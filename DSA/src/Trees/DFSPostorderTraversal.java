@@ -19,8 +19,10 @@ public class DFSPostorderTraversal {
         root0.right.right = new TreeNode(v.get(6));
         List<Integer> ans = postorderTraversal(root0);
         List<Integer> a = postorderIterative(root0);
+        List<Integer> list = postOrderSingleStack(root0);
         System.out.println(ans);
         System.out.println(a);
+        System.out.println(list);
 
 	}
 	 private static List<Integer> postorderTraversal(TreeNode root) {
@@ -56,6 +58,30 @@ public class DFSPostorderTraversal {
 	    
 	    private static List<Integer> postOrderSingleStack(TreeNode root){
 	    	List<Integer> postorder = new ArrayList<>();
+	    	Stack<TreeNode> st = new Stack<>();
+	    	st.push(root);
+	    	TreeNode cur = root;
+	    	while(!st.isEmpty() || cur!=null) {
+	    		if(cur!=null) {
+	    			st.push(cur);
+	    			cur=cur.left;
+	    		}else {
+	    			TreeNode temp = st.peek().right;
+	    			if(temp==null) {
+	    				temp=st.peek();
+	    				st.pop();
+	    				postorder.add(temp.val);
+	    				while(!st.isEmpty() && temp==st.peek().right) {
+	    					temp=st.peek();
+	    					st.pop();
+	    					postorder.add(temp.val);
+	    				}
+	    			}else {
+	    				cur=temp;
+	    			}
+	    			
+	    		}
+	    	}
 	    	return postorder;
 	    }
 }
