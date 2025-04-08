@@ -1,6 +1,6 @@
 package BinarySearch;
 
-public class KthElemenetTwoSortedArray {
+public class KthElementTwoSortedArray {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
