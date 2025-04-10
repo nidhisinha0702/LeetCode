@@ -17,7 +17,7 @@ public class Ceil {
 		int low = 0;
 		int high = arr.size()-1;
 		while(low<=high) {
-			int mid = (low + high) >> 1;
+			int mid = (low + high) >> 1;//low + (high-low)/2
 			if(arr.get(mid) >= target) {
 				high = mid - 1;
 			}else {
