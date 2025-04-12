@@ -1,10 +1,10 @@
 package dpOnLIS;
 
-public class LongestMountain {
+public class LongestMountainArray {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int arr[] = {2,1,1,5,6,2,3,1};
+		int arr[] = {0,1,2,1,2};
 		System.out.println("The length of the longest mountain is : "+longestMountain(arr));
 	}
 	private static int longestMountain(int[] A) {
