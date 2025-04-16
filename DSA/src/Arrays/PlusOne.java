@@ -4,7 +4,7 @@ public class PlusOne {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int nums[] = {1,9,3};
+		int nums[] = {9,9};
 		int ans[] = plusOneOptimized(nums);
 		for(int a:ans)
 			System.out.print(a+" ");
