@@ -8,6 +8,7 @@ public class TrappedWater {
 		System.out.println("The duplicate element is :"+trap(arr));
 
 	}
+	//TC-> O(3n) SC-> O(2n)
 	private static int trap(int[] height) {
         int n = height.length;
         int prefix[] = new int [n];
