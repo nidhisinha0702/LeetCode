@@ -1,5 +1,7 @@
 package BinarySearch;
 
+import java.util.Arrays;
+
 public class minimumRateToEatBanana {
 
 	public static void main(String[] args) {
@@ -12,10 +14,10 @@ public class minimumRateToEatBanana {
 	}
 	 private static int minimumRateToEatBananas(int []v, int h) {
 	        // Write Your Code Here
-	        int low = 1, high = findMax(v);
+	        int low = 1, high = Arrays.stream(v).max().getAsInt();
 	        while(low<=high){
 	            int mid = (low + high)/2;
-	            int reqTime = totalHours(v,mid);
+	            long reqTime = totalHours(v,mid);
 	            if(reqTime<=h){
 	                high = mid - 1;
 	            }else{
@@ -25,16 +27,10 @@ public class minimumRateToEatBanana {
 
 	    }
 
-	    private static int totalHours(int[] a, int h){
-	        int ans = 0;
-	        for(int i =0;i<a.length;i++){
-	            ans += Math.ceil((double)a[i]/(double)h);
+	    private static long totalHours(int[] a, int h){
+	        long ans = 0;
+	        for(int ele:a){
+	            ans += Math.ceil((double)ele/h);
 	        }return ans;
-	    }
-	    private static int findMax(int a[]){
-	        int maxi = Integer.MIN_VALUE;
-	        for(int i=0;i<a.length;i++){
-	            if(a[i]>maxi) maxi = Math.max(maxi, a[i]);
-	        }return maxi;
 	    }
 }
