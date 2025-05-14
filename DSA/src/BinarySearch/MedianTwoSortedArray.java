@@ -9,27 +9,39 @@ public class MedianTwoSortedArray {
 	       System.out.println("The median of two sorted arrays is " + findMedianSortedArrays(a, b));
 	}
 	private static double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int n1 = nums1.length;
-        int n2 = nums2.length;
-        if(n1>n2) return findMedianSortedArrays(nums2,nums1);
-        int low = 0;
-        int high = n1;
-        int left = (n1 + n2 + 1)/2; //length of left half
-        int n = n1 + n2; //tota length
-        while(low<=high){//apply binary search
-            int mid1 = (low + high) / 2;
-            int mid2 = left - mid1;
-            //calculate l1,l2,r1,r2
-            int l1 = (mid1>0)?nums1[mid1 - 1]:Integer.MIN_VALUE;
-            int l2 = (mid2>0)?nums2[mid2 - 1]:Integer.MIN_VALUE;
-            int r1 = (mid1<n1)?nums1[mid1]:Integer.MAX_VALUE;
-            int r2 = (mid2<n2)?nums2[mid2]:Integer.MAX_VALUE;
-            if(l1<=r2 && l2<=r1){
-                if(n % 2 == 1) return Math.max(l1,l2);
-                else    return ((double)(Math.max(l1,l2) + Math.min(r1,r2))) / 2.0;
-            }else if(l1>r2) high = mid1 - 1;
-            else low = mid1 + 1;
-        }return 0;
+        //the idea is to apply binary search without merging the arrays
+        if(nums1.length > nums2.length) return findMedianSortedArrays(nums2,nums1);
+        int n = nums1.length;
+        int m = nums2.length;
+        //keep the low and high in smaller array
+        int lo = 0, hi = n;
+        while(lo<=hi){
+            //find the mid as cut1 and cut2 for nums1 and nums2
+            int cut1 = (lo + hi) >> 1;
+            int cut2 = (n + m + 1)/2 - cut1;
+            //find l1,l2,r1,r2 where l1 is last ele of nums1 before cut1, l2 is last ele of nums2 before cut2
+            //r1 is the first ele of nums1 at cut1, and r2 is the first ele of nums2 at cut2
+            int l1 = cut1 == 0 ? Integer.MIN_VALUE : nums1[cut1 - 1];
+            int l2 = cut2 == 0 ? Integer.MIN_VALUE : nums2[cut2 - 1];
+            int r1 = cut1 == n ? Integer.MAX_VALUE : nums1[cut1];
+            int r2 = cut2 == m ? Integer.MAX_VALUE : nums2[cut2];
+
+            //to satisfy the sorted cond l1<r2 and l2<r1 (as the arrays are sorted l1<r1 and l2<r2)
+            if(l1 > r2){
+                //we need to move cut1 to left
+                hi = cut1 - 1;
+            }
+            else if(l2 > r1){
+                //we need to move cut1 to right
+                lo = cut1 + 1;
+            }else{
+                //valid cond 
+            	//if odd the median will be (max(l1,l2)+min(r1,r2)/2) for even max(l1,l2) if left has more ele
+            	//else min(r1,r2)
+                return ((n + m) % 2 == 0 ? (Math.max(l1, l2) + Math.min(r1, r2)) / 2.0 : (double)Math.max(l1, l2));
+            }
+        }
+         return -1;
     }
 
 }
