@@ -15,7 +15,7 @@ public class FractionalKnapsack {
 	}
 	private static double fractionalKnapsack(List<Integer> val, List<Integer> wt, int capacity) {
 	        // code here
-	        //greeedy value per weight in decending order
+	        //greedy value per weight in decending order
 	        Item arr[] = new Item[val.size()];
 	        for(int i=0;i<val.size();i++) {
 	        arr[i] = new Item(val.get(i),wt.get(i));
