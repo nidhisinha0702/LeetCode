@@ -32,8 +32,10 @@ public class LowestCommonAncestor {
 	
 	private static TreeNode lca(TreeNode root, TreeNode p, TreeNode q) {
 		if(root == null) return null;
+		//if both are greater go to right
 		if(p.val > root.val && q.val > root.val)
 			return lca(root.right, p,q);
+		//if both are smaller go to left
 		else if(p.val < root.val && q.val < root.val)
 			return lca(root.left, p , q);
 		else 
