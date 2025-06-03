@@ -3,7 +3,8 @@ package Sorting;
 public class QuickSort {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// WAP to demonstrate quick sort (choose any element as pivot, after first pass, al the elements < p will be on LHS of p
+		// & elements > p will be at RHS of p)
 		int arr[] = {4,6,2,5,7,9,1,3};
 		int low = 0;
 		int high = arr.length -1;
@@ -23,7 +24,7 @@ public class QuickSort {
 	    }
 
 	    static int partition(int arr[], int low, int high) {
-	        // your code here
+	        //choose pivot as low
 	        int pivot = arr[low];
 	        int i=low;
 	        int j=high;
@@ -32,7 +33,9 @@ public class QuickSort {
 	                i++;
 	            }while(arr[j]>pivot && j>=low+1){
 	                j--;
-	            }if(i<j) {
+	            }
+	            //check if i<j then only swap
+	            if(i<j) {
 	                int temp = arr[i];
 	                arr[i] = arr[j];
 	                arr[j] = temp;

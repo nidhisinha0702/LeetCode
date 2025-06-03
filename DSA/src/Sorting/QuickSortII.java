@@ -3,7 +3,7 @@ package Sorting;
 public class QuickSortII {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		//WAP to demo quick sort and pick pivot as last element
 		int arr[] = {24 ,18 ,38 ,43 ,14 ,40 ,1, 54};
 		quickSort(arr);
 		for(int a:arr) {

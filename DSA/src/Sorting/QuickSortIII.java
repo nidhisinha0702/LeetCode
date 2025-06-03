@@ -3,7 +3,7 @@ package Sorting;
 import java.util.Random;
 
 public class QuickSortIII {
-
+	//WAP to demo quick sort and pick pivot as random element
 	public static void main(String[] args) {
 		Random rand = new Random();
 		int[] numbers = new int[10];
@@ -56,7 +56,6 @@ public class QuickSortIII {
 	    	int temp = arr[ind1];
 	    	arr[ind1]=arr[ind2];
 	    	arr[ind2]=temp;
-	    	
 	    }
 
 }
