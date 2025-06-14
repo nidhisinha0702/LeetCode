@@ -15,6 +15,7 @@ public class ShortestPathInWeightedUndirectedGraph {
 		System.out.println(path);
 
 	}
+	//(E+logV)+O(N)
 	 private static List<Integer> shortestPath(int n, int m, int edges[][]) {
 	        //dijkstra algorithm
 	        ArrayList<ArrayList<Pair>> adj = new ArrayList<>();
@@ -33,11 +34,12 @@ public class ShortestPathInWeightedUndirectedGraph {
 	        
 	        //min-heap
 	        PriorityQueue<Pair> pq = new PriorityQueue<Pair>((a,b) -> Integer.compare(a.second,b.second));
-	        pq.add(new Pair(1,0));
+	        pq.add(new Pair(1,0));//add src
 	        int dist[] = new int[n+1];
 	        Arrays.fill(dist, (int)1e9);
-	        dist[1] = 0;
+	        dist[1] = 0;//mark src dist as 0
 	        int parent[] = new int[n+1];
+	        //mark parent with themselves
 	        for(int i=0;i<=n;i++){
 	            parent[i] = i;
 	        }
@@ -59,6 +61,7 @@ public class ShortestPathInWeightedUndirectedGraph {
 	        }
 	        
 	        ArrayList<Integer> path = new ArrayList<>();
+	        //not reached the destination
 	        if(dist[n] == 1e9){
 	            path.add(-1);
 	            return path;
@@ -69,9 +72,9 @@ public class ShortestPathInWeightedUndirectedGraph {
 	            path.add(node);
 	            node = parent[node];
 	        }
-	        path.add(1);
+	        path.add(1);//add src
 	        path.add(dist[n]);
-	        Collections.reverse(path);
+	        Collections.reverse(path);//reverse the array for actual path
 	        return path;
 	    }
 	    
