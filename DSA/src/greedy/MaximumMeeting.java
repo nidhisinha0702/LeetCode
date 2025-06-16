@@ -7,8 +7,8 @@ public class MaximumMeeting {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] start = {1,3,0,5,8,5};
-		int[] end = {2,4,6,7,9,9};
+		int[] start = {0,3,1,5,5,8};
+		int[] end = {5,4,2,9,7,9};
 		
 		System.out.println("The maximum meetings that can take place in a single meeting room is : "+maxMeetings(start, end));
 	}
@@ -18,13 +18,16 @@ public class MaximumMeeting {
 		for(int i=0;i<n;i++) {
 			arr[i] = new Pair(start[i],end[i],i);
 		}
+		//faster meetings first
 		Arrays.sort(arr,new endTimeComparator());
 		
-		//iterate over the arr
-		int cnt = 1;
-		int freeTime = arr[0].end;
+		//iterate over the pair array
+		int cnt = 1;//st meeting can be performed always
+		int freeTime = arr[0].end;//when 1st meeting ends
+		//store the order of meetings
 		int ds[] = new int[arr.length];
-		ds[0]=arr[0].pos;
+		ds[0] = arr[0].pos;
+		//start with 1st index
 		for(int i=1;i<arr.length;i++) {
 			if(arr[i].st>freeTime) {
 				cnt += 1;
