@@ -26,6 +26,7 @@ public class DisjointSet {
 	public void unionByRank(int u, int v) {
 		int ulp_u = findUPar(u);
 		int ulp_v = findUPar(v);
+		//if belong to same component
 		if(ulp_u == ulp_v) return;
 		//smaller get attached to bigger
 		if(rank.get(ulp_u) < rank.get(ulp_v)) {

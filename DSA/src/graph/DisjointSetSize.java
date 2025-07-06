@@ -2,7 +2,7 @@ package graph;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//TC->O(4 alpha) ~= O(constant)
 public class DisjointSetSize {
 	List<Integer> rank = new ArrayList<>();
 	List<Integer> parent = new ArrayList<>();
